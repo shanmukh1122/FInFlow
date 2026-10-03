@@ -1,0 +1,475 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+ 
+  html {
+    font-size: 14px;
+  }
+  
+  @media (min-width: 640px) {
+    html {
+      font-size: 15px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    html {
+      font-size: 16px;
+    }
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+@layer components {
+  .card {
+    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 p-4;
+    animation: fadeInUp 0.4s ease-out;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @media (min-width: 768px) {
+    .card {
+      @apply p-5 rounded-2xl;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .card {
+      @apply p-6;
+    }
+  }
+  
+  .card:hover {
+    @apply shadow-xl transform -translate-y-1;
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+  
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 text-white px-3 py-1.5 rounded-lg transition-all duration-200 font-medium text-sm shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40;
+  }
+  
+  @media (min-width: 768px) {
+    .btn-primary {
+      @apply px-4 py-2 rounded-xl text-base;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .btn-primary {
+      @apply px-5 py-2.5;
+    }
+  }
+  
+  .btn-primary:active {
+    @apply transform scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200/80 dark:bg-gray-700/80 backdrop-blur-sm hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 px-3 py-1.5 rounded-lg transition-all duration-200 text-sm;
+  }
+  
+  @media (min-width: 768px) {
+    .btn-secondary {
+      @apply px-4 py-2 rounded-xl text-base;
+    }
+  }
+
+  .input-field {
+    @apply w-full px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+  }
+  
+  @media (min-width: 768px) {
+    .input-field {
+      @apply px-4 py-2 text-base rounded-xl;
+    }
+  }
+  
+  
+  .table-container {
+    @apply overflow-x-auto -mx-4 px-4;
+  }
+  
+  @media (min-width: 768px) {
+    .table-container {
+      @apply mx-0 px-0 overflow-x-visible;
+    }
+  }
+  
+ 
+  .dashboard-grid {
+    @apply grid grid-cols-1 gap-4;
+  }
+  
+  @media (min-width: 640px) {
+    .dashboard-grid {
+      @apply grid-cols-2 gap-5;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .dashboard-grid {
+      @apply grid-cols-3 gap-6;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .dashboard-grid {
+      @apply grid-cols-4 gap-6;
+    }
+  }
+  
+
+  .stats-grid {
+    @apply grid grid-cols-1 gap-4;
+  }
+  
+  @media (min-width: 640px) {
+    .stats-grid {
+      @apply grid-cols-2 gap-5;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .stats-grid {
+      @apply grid-cols-3 gap-6;
+    }
+  }
+  
+
+  .charts-container {
+    @apply grid grid-cols-1 gap-4;
+  }
+  
+  @media (min-width: 1024px) {
+    .charts-container {
+      @apply grid-cols-2 gap-6;
+    }
+  }
+  
+
+  .sidebar-mobile-overlay {
+    @apply fixed inset-0 bg-black/50 z-40 lg:hidden;
+    animation: fadeInUp 0.2s ease-out;
+  }
+  
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+    animation: fadeInUp 0.2s ease-out;
+  }
+  
+  .modal-content {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-[90vw] max-h-[90vh] overflow-y-auto p-4;
+    animation: modalPop 0.3s ease-out;
+  }
+  
+  @media (min-width: 640px) {
+    .modal-content {
+      @apply rounded-2xl max-w-md p-6;
+    }
+  }
+  
+ 
+  .toast-notification {
+    @apply fixed bottom-4 right-4 left-4 sm:left-auto bg-gray-900 dark:bg-gray-800 text-white px-4 py-2.5 rounded-lg shadow-2xl z-50 flex items-center gap-2 text-sm;
+    animation: slideInRight 0.3s ease-out;
+  }
+  
+  @media (min-width: 640px) {
+    .toast-notification {
+      @apply px-6 py-3 rounded-xl text-base left-auto;
+    }
+  }
+  
+
+  .badge {
+    @apply px-1.5 py-0.5 rounded text-xs font-medium transition-all duration-200;
+  }
+  
+  @media (min-width: 768px) {
+    .badge {
+      @apply px-2 py-1 text-sm rounded-full;
+    }
+  }
+  
+  .badge-income {
+    @apply bg-gradient-to-r from-green-100 to-green-50 text-green-700 dark:from-green-900/30 dark:to-green-800/30 dark:text-green-400;
+  }
+  
+  .badge-expense {
+    @apply bg-gradient-to-r from-red-100 to-red-50 text-red-700 dark:from-red-900/30 dark:to-red-800/30 dark:text-red-400;
+  }
+  
+  .responsive-table {
+    @apply w-full text-sm;
+  }
+  
+  .responsive-table th,
+  .responsive-table td {
+    @apply px-2 py-2;
+  }
+  
+  @media (min-width: 640px) {
+    .responsive-table th,
+    .responsive-table td {
+      @apply px-3 py-2.5;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .responsive-table th,
+    .responsive-table td {
+      @apply px-4 py-3;
+    }
+  }
+  
+  .filters-container {
+    @apply flex flex-col gap-3;
+  }
+  
+  @media (min-width: 640px) {
+    .filters-container {
+      @apply flex-row flex-wrap;
+    }
+  }
+  
+
+  .stat-card {
+    @apply relative overflow-hidden;
+  }
+  
+  .stat-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    animation: shimmer 3s infinite;
+    transform: translateX(-100%);
+  }
+  
+  .table-row {
+    @apply transition-all duration-200 hover:bg-gray-50/80 dark:hover:bg-gray-700/80 cursor-pointer;
+    animation: slideInLeft 0.3s ease-out;
+  }
+  
+ 
+  .mobile-menu-btn {
+    @apply lg:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-700;
+  }
+  
+  .recharts-wrapper {
+    @apply w-full;
+  }
+  
+  .recharts-default-tooltip {
+    @apply !bg-white/95 dark:!bg-gray-800/95 !backdrop-blur-sm !border !border-gray-200 dark:!border-gray-700 !rounded-lg !shadow-lg !text-xs;
+  }
+  
+  @media (min-width: 768px) {
+    .recharts-default-tooltip {
+      @apply !text-sm;
+    }
+  }
+  
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+@layer utilities {
+  .text-responsive-sm {
+    @apply text-xs md:text-sm;
+  }
+  
+  .text-responsive-base {
+    @apply text-sm md:text-base;
+  }
+  
+  .text-responsive-lg {
+    @apply text-base md:text-lg;
+  }
+  
+  .text-responsive-xl {
+    @apply text-lg md:text-xl lg:text-2xl;
+  }
+  
+  .text-responsive-2xl {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+  
+  .spacing-responsive {
+    @apply space-y-4 md:space-y-5 lg:space-y-6;
+  }
+  
+  .padding-responsive {
+    @apply p-4 md:p-5 lg:p-6;
+  }
+  
+  .gap-responsive {
+    @apply gap-3 md:gap-4 lg:gap-6;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .hide-on-mobile {
+    display: none;
+  }
+  
+  .flex-stack-mobile {
+    flex-direction: column;
+  }
+  
+  .btn-full-mobile {
+    width: 100%;
+  }
+  
+
+  .recharts-wrapper {
+    margin: 0 auto;
+  }
+  
+  .card-full-mobile {
+    width: 100%;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .hide-on-tablet {
+    display: none;
+  }
+  
+  .grid-tablet-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hide-on-desktop {
+    display: none;
+  }
+  
+  .sticky-desktop {
+    position: sticky;
+    top: 1rem;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+  
+  .card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.fixed.left-0 {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+@media (min-width: 1024px) {
+  .sticky {
+    position: sticky;
+  }
+}
