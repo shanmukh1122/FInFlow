@@ -201,9 +201,9 @@ npm run dev
 
 ## 👨‍💻 Author
 
-**Satya Avanish Pulavarthi**
-📧 [satyaavanish15@gmail.com](mailto:satyaavanish15@gmail.com)
-🔗 https://github.com/satyaavanish
+**Valli shanmukha sai**
+📧 [vallishanmukh10@gmail.com](mailto:vallishanmukh10@gmail.com)
+🔗 https://github.com/shanmukh1122
 
 ---
 
